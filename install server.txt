@@ -1,0 +1,90 @@
+
+1º Instalacion de paquetes
+	sudo apt-get update
+	sudo apt-get install nginx python-flup python-virtualenv
+	sudo pip install Flask
+	
+2º creación del directorio del proyecto 
+	sudo mkdir /var/www/homeControl/
+	sudo chown pi:pi /var/www/homeControl/
+	cd /var/www/homeControl/
+	sudo virtualenv venv
+	
+3º creación del script principal
+
+	nano homeControl.py:
+	
+		from flask import Flask
+		app = Flask(__name__)
+
+		@app.route('/')
+		def homeControl():
+			return 'Hello World!'
+			
+		@app.route('/prueba/')
+		def Prueba():
+			return 'prueba'
+
+		if __name__ == '__main__':
+			app.run()
+			
+4º creación del script .fcgi
+	
+	nano homeControl.fcgi:
+		#!/usr/bin/python
+		from flup.server.fcgi import WSGIServer
+		from homeControl import app
+
+		if __name__ == '__main__':
+			WSGIServer(app, bindAddress='/var/www/homeControl/fcgi.sock').run()
+			
+
+	- permisos de ejecución
+	
+		sudo chmod +x /var/www/homeControl/homeControl.fcgi 
+			
+5º Creación del archivo de configuración de nginx y linkado
+	nano homeControl-nginx.conf:
+		server {
+			listen      80;
+			server_name localhost;
+			charset     utf-8;
+			client_max_body_size 75M;
+			
+			error_log /var/log/nginx/error.log error;
+			access_log /var/log/nginx/access.log;
+
+			location / { try_files $uri @yourapplication; }
+			location @yourapplication {
+				include fastcgi_params;
+				fastcgi_param PATH_INFO $fastcgi_script_name;
+				fastcgi_param SCRIPT_NAME "";
+				fastcgi_pass unix:/var/www/homeControl/fcgi.sock;
+			}
+		}
+	
+	sudo ln -s /var/www/homeControl/homeControl-nginx.conf /etc/nginx/conf.d/
+
+6º añadir el usuario www-data al grupo pi para que pueda ejecutar el socket 
+
+	adduser www-data pi
+	
+7º cambiar la mascara del usuario pi para garantizar permisos de escrituras al los miembros del grupo
+
+	umask 002
+	
+8º eliminación de la configuracion por defecto de nginx
+
+	sudo rm -r /etc/nginx/sites-enables/default/
+	
+	
+9º reiniciar nginx
+
+	sudo service nginx restart
+	
+10º arrancar server fastcgi
+
+	./homeControl.fcgi
+	
+	
+	
