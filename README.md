@@ -1,4 +1,4 @@
 homeControl
 ===========
 
-Sistemas domótico
+Sistema domótico
