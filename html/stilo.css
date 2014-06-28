@@ -1,0 +1,44 @@
+::root{
+	--bar-title-color: #428bca;
+	--bar-subtitle-color: #5cb85c;
+	--bar-subtitle-border-color: rgba(51, 99, 51, 0.54);
+	--module-color: rgba(92, 184, 92, 0.28);
+}
+.title{
+	background-color: #428bca;
+	color: white;
+}
+.subtitle{
+	background-color: #5cb85c;
+	border-radius: 5px;
+	border-bottom: solid rgba(51, 99, 51, 0.54) 1px;
+	border-right: solid rgba(51, 99, 51, 0.54) 1px;
+}
+.subtitle p{
+	margin:0px;
+	font-size:15px;
+	font-weight:bold;
+	color:white;
+}
+.elements{
+	border-bottom: solid white 1px;
+	height:60px;
+}
+.elements p{
+	margin:3px 0px 0px 0px;
+	font-size:12px;
+	font-weight:bold;
+	color:black;
+}
+.modulo{
+	border: solid white 1px;
+	border-right: solid white 3px;
+	background-color: rgba(92, 184, 92, 0.28);
+}
+.cuerpo{
+}
+.body {
+	margin: 0px 5px;
+	width: 1170px;
+	margin:0px auto 0px auto;
+}

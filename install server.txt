@@ -71,7 +71,8 @@
 	
 7º cambiar la mascara del usuario pi para garantizar permisos de escrituras al los miembros del grupo
 
-	umask 002
+	cd
+	echo "umask 002" >> .bashrc
 	
 8º eliminación de la configuracion por defecto de nginx
 
