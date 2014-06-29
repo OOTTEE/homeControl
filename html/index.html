@@ -13,8 +13,6 @@
 		<link rel="stylesheet" href="./static/stilo.css"> 
 	</head>
 	<body>
-		<body>
-
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -44,19 +42,19 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar" >
-			<li class="dropdown active">
-				<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-				  Habitaciones <span class="caret"></span>
-				</a>
-				<div class="sub-sidebar">
-					<ul class="nav nav-sub-sidebar " role="menu">
-					  <li><a href="#">Salon</a></li>
-					  <li><a href="#">Cocina</a></li>
-					  <li><a href="#">Vicky</a></li>
-					  <li><a href="#">Suso y Oliva</a></li>
-					  <li><a href="#">Invitados</a></li>
-					  <li><a href="#">Baño</a></li>
-					</ul>
+			<li>
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="collapsed">Habitaciones</a>
+				<div id="collapseOne" class="panel-collapse collapse">
+					<div class="sub-sidebar">
+						<ul class="nav nav-sub-sidebar " role="menu">
+						  <li><a href="#">Salon</a></li>
+						  <li><a href="#">Cocina</a></li>
+						  <li><a href="#">Vicky</a></li>
+						  <li><a href="#">Suso y Oliva</a></li>
+						  <li><a href="#">Invitados</a></li>
+						  <li><a href="#">Baño</a></li>
+						</ul>
+					</div>
 				</div>
 			</li>
             <li><a href="#" >Persianas</a></li>
