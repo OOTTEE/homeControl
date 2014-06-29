@@ -1,10 +1,14 @@
 /*
  * Base structure
  */
+@font-face {
 
+
+}
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
-  padding-top: 50px;
+	font-family: 'Raleway', 'Roboto Condensed', sans-serif;
+	padding-top: 50px;
 }
 
 
@@ -23,6 +27,9 @@ body {
  */
 .navbar-fixed-top {
   border: 0;
+}
+.titulo{
+	font-weight: bolder;
 }
 
 /*
@@ -104,5 +111,22 @@ body {
 }
 .main .page-header {
   margin-top: 0;
+}
+
+
+/*
+ * Placeholder dashboard ideas
+ */
+
+.placeholders {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.placeholder {
+  margin-bottom: 20px;
+}
+.placeholder span {
+font-size: 50px;
+font-weight: 600;
 }
 

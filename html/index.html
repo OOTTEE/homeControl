@@ -5,14 +5,14 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 		<meta name="description" content="">
-		<link rel="icon" href="../../favicon.ico">
+		<link rel="shortcut icon" href="./static/favicon.ico">
 		<title>Home Control</title>
 		<link rel="stylesheet" href="./static/lib/bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="./static/lib/bootstrap/css/bootstrap-theme.min.css">
 		<link rel="stylesheet" href="./static/normalize.css">
 		<link rel="stylesheet" href="./static/stilo.css"> 
-	</head>
-	<body>
+<link href='http://fonts.googleapis.com/css?family=Raleway:300,700' rel='stylesheet' type='text/css'>
+		<body>
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -22,7 +22,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-home"></span> Home Control</a>
+          <a class="navbar-brand titulo" href="#"><span class="glyphicon glyphicon-home"></span> Home Control</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -42,14 +42,15 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar" >
-			<li>
+            <li onclick="selectOption(event)" class="active"><a href="#" >Inicio</a></li>
+			<li onclick="selectOption(event)">
 				<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="collapsed">Habitaciones</a>
 				<div id="collapseOne" class="panel-collapse collapse">
 					<div class="sub-sidebar">
 						<ul class="nav nav-sub-sidebar " role="menu">
 						  <li><a href="#">Salon</a></li>
 						  <li><a href="#">Cocina</a></li>
-						  <li><a href="#">Vicky</a></li>
+						  <li><a href="#">Viky</a></li> 
 						  <li><a href="#">Suso y Oliva</a></li>
 						  <li><a href="#">Invitados</a></li>
 						  <li><a href="#">Baño</a></li>
@@ -57,25 +58,56 @@
 					</div>
 				</div>
 			</li>
-            <li><a href="#" >Persianas</a></li>
+            <li onclick="selectOption(event)"><a href="#" >Persianas</a></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Habitaciones</h1>
+          <h1 class="page-header">Inicio</h1>
+		  <div class="row placeholders">
+            <div class="col-xs-6 col-sm-4 placeholder">
+              <span>30º</span>
+              <h4>Exterior</h4>
+            </div>
+            <div class="col-xs-6 col-sm-4 placeholder">
+              <span>21º</span>
+              <h4>Interior</h4>
+            </div>
+            <div class="col-xs-6 col-sm-4 placeholder">
+              <span>16:00</span>
+              <h4>Hora</h4>
+            </div>
+          </div>
 
     
         </div>
       </div>
     </div>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
+    <!-- Bootstrap core JavaScript-->
+		
+	<script>
+	var x = 0;
+	function selectOption(event) {
+		$('.nav.nav-sidebar')[0].getElementsByClassName('active')[0].className=''
+		event.toElement.parentElement.className='active'
+	}
+	</script>
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="./static/lib/bootstrap/js/bootstrap.min.js"></script> 
 
-	<div id="global-zeroclipboard-html-bridge" class="global-zeroclipboard-container" style="position: absolute; left: 0px; top: -9999px; width: 15px; height: 15px; z-index: 999999999;" title="" data-original-title="Copy to clipboard"> 
-		<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" id="global-zeroclipboard-flash-bridge" width="100%" height="100%">         <param name="movie" value="/assets/flash/ZeroClipboard.swf?noCache=1404034155020">         <param name="allowScriptAccess" value="sameDomain">         <param name="scale" value="exactfit">         <param name="loop" value="false">         <param name="menu" value="false">         <param name="quality" value="best">         <param name="bgcolor" value="#ffffff">         <param name="wmode" value="transparent">         <param name="flashvars" value="trustedOrigins=getbootstrap.com%2C%2F%2Fgetbootstrap.com%2Chttp%3A%2F%2Fgetbootstrap.com">         <embed src="/assets/flash/ZeroClipboard.swf?noCache=1404034155020" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="100%" height="100%" name="global-zeroclipboard-flash-bridge" allowscriptaccess="sameDomain" allowfullscreen="false" type="application/x-shockwave-flash" wmode="transparent" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="trustedOrigins=getbootstrap.com%2C%2F%2Fgetbootstrap.com%2Chttp%3A%2F%2Fgetbootstrap.com" scale="exactfit"></object>
-	</div>
+	<!--<div id="global-zeroclipboard-html-bridge" class="global-zeroclipboard-container" style="position: absolute; left: 0px; top: -9999px; width: 15px; height: 15px; z-index: 999999999;" title="" data-original-title="Copy to clipboard"> 
+		<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" id="global-zeroclipboard-flash-bridge" width="100%" height="100%">   
+			<param name="movie" value="/assets/flash/ZeroClipboard.swf?noCache=1404034155020">     
+			<param name="allowScriptAccess" value="sameDomain">      
+			<param name="scale" value="exactfit">  
+			<param name="loop" value="false">   
+			<param name="menu" value="false">    
+			<param name="quality" value="best">  
+			<param name="bgcolor" value="#ffffff">
+			<param name="wmode" value="transparent">   
+			<param name="flashvars" value="trustedOrigins=getbootstrap.com%2C%2F%2Fgetbootstrap.com%2Chttp%3A%2F%2Fgetbootstrap.com">         <embed src="/assets/flash/ZeroClipboard.swf?noCache=1404034155020" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="100%" height="100%" name="global-zeroclipboard-flash-bridge" allowscriptaccess="sameDomain" allowfullscreen="false" type="application/x-shockwave-flash" wmode="transparent" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="trustedOrigins=getbootstrap.com%2C%2F%2Fgetbootstrap.com%2Chttp%3A%2F%2Fgetbootstrap.com" scale="exactfit">
+		</object>
+	</div>-->
 	</body>
 </html>
