@@ -45,7 +45,7 @@
 
 		<div class="container-fluid">
 		  <div class="row">
-			<div class="col-sm-3 col-md-2 sidebar navbar-collapse  bar2">
+			<div class="col-sm-4 col-md-2 sidebar navbar-collapse  bar2">
 				<div class="long-sidebar">
 					<ul class="nav nav-sidebar" >
 					<li onclick="selectOption(event)" class="active"><a href="#" >Inicio</a></li>
@@ -81,7 +81,7 @@
 				  <h4>Interior</h4>
 				</div>
 				<div class="col-xs-6 col-sm-4 placeholder">
-				  <span>16:00</span>
+				  <span id="reloj">16:00</span>
 				  <h4>Hora</h4>
 				</div>
 			  </div>
@@ -93,8 +93,23 @@
 
 		<!-- Bootstrap core JavaScript-->
 			
-		<script>
-		var x = 0;
+		<script type="text/javascript">
+		function startTime(){
+			today=new Date();
+			h=today.getHours();
+			m=today.getMinutes();
+			s=today.getSeconds();
+			m=checkTime(m);
+			document.getElementById('reloj').innerHTML=h+":"+m;
+			t=setTimeout('startTime()',500);
+		}
+		function checkTime(i){
+			if (i<10){
+				i="0" + i;
+			}
+			return i;
+		}
+		window.onload=function(){startTime();}
 		function selectOption(event) {
 			$('.nav.nav-sidebar')[0].getElementsByClassName('active')[0].className=''
 			event.toElement.parentElement.className='active'
