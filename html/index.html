@@ -27,94 +27,31 @@
 					<span class="sr-only">Sidebar</span>
 					<span class="glyphicon glyphicon-circle-arrow-down icon-white"></span>
 				</button>
-			  <a class="navbar-brand titulo" href="#"><span class="glyphicon glyphicon-home"></span> Home Control</a>
+				<a class="navbar-brand tituloPagina" href="./"><span class="glyphicon glyphicon-home"></span> Home Control</a>
 			</div>
 			<div class="navbar-collapse collapse bar1">
-			  <ul class="nav navbar-nav navbar-right">
-				<!--<li><a href="#">Dashboard</a></li>
-				<li><a href="#">Profile</a></li>
-				<li><a href="#">Help</a></li>-->
-				<li><a href="#">Opciones <span class="glyphicon glyphicon-wrench"></span> </a></li>
-			  </ul>
-			  <!--<form class="navbar-form navbar-right">
-				<input type="text" class="form-control" placeholder="Search...">
-			  </form>-->
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown">
+					  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> Opciones</a>
+					  <ul class="dropdown-menu" role="menu">
+						<li><a href="./adminComponentes">Administrar Componentes</a></li>
+						<li><a href="./adminHabitaciones">Administrar Habitaciones</a></li>
+					  </ul>
+					</li>
+					<li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Salir</a></li>
+				</ul>
 			</div>
 		  </div>
 		</div>
 
 		<div class="container-fluid">
 		  <div class="row">
-			<div class="col-sm-4 col-md-2 sidebar navbar-collapse  bar2">
-				<div class="long-sidebar">
-					<ul class="nav nav-sidebar" >
-					<li onclick="selectOption(event)" class="active"><a href="#" >Inicio</a></li>
-					<li onclick="selectOption(event)">
-						<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="collapsed">Habitaciones</a>
-						<div id="collapseOne" class="panel-collapse collapse">
-							<div class="sub-sidebar">
-								<ul class="nav nav-sub-sidebar " role="menu">
-								  <li><a href="#">Salon</a></li>
-								  <li><a href="#">Cocina</a></li>
-								  <li><a href="#">Viky</a></li> 
-								  <li><a href="#">Suso y Oliva</a></li>
-								  <li><a href="#">Invitados</a></li>
-								  <li><a href="#">Baño</a></li>
-								</ul>
-							</div>
-						</div>
-					</li>
-					<li onclick="selectOption(event)"><a href="#" >Persianas</a></li>
-					</ul>
-				</div>
-				
-			</div>
-			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			  <h1 class="page-header">Inicio</h1>
-			  <div class="row placeholders">
-				<div class="col-xs-6 col-sm-4 placeholder">
-				  <span>30º<span class="unidad">C</span></span>
-				  <h4>Exterior</h4>
-				</div>
-				<div class="col-xs-6 col-sm-4 placeholder">
-				  <span>21º<span class="unidad">C</span></span>
-				  <h4>Interior</h4>
-				</div>
-				<div class="col-xs-6 col-sm-4 placeholder">
-				  <span id="reloj">16:00</span>
-				  <h4>Hora</h4>
-				</div>
-			  </div>
-
-		
-			</div>
+			{% include ["body.html"] %}
 		  </div>
 		</div>
 
-		<!-- Bootstrap core JavaScript-->
-			
-		<script type="text/javascript">
-		function startTime(){
-			today=new Date();
-			h=today.getHours();
-			m=today.getMinutes();
-			s=today.getSeconds();
-			m=checkTime(m);
-			document.getElementById('reloj').innerHTML=h+":"+m;
-			t=setTimeout('startTime()',500);
-		}
-		function checkTime(i){
-			if (i<10){
-				i="0" + i;
-			}
-			return i;
-		}
-		window.onload=function(){startTime();}
-		function selectOption(event) {
-			$('.nav.nav-sidebar')[0].getElementsByClassName('active')[0].className=''
-			event.toElement.parentElement.className='active'
-		}
-		</script>
+		<!-- Bootstrap core JavaScript-->	
+		
 		<!-- Placed at the end of the document so the pages load faster -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script src="./static/lib/bootstrap/js/bootstrap.min.js"></script> 
@@ -132,5 +69,6 @@
 				<param name="flashvars" value="trustedOrigins=getbootstrap.com%2C%2F%2Fgetbootstrap.com%2Chttp%3A%2F%2Fgetbootstrap.com">         <embed src="/assets/flash/ZeroClipboard.swf?noCache=1404034155020" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="100%" height="100%" name="global-zeroclipboard-flash-bridge" allowscriptaccess="sameDomain" allowfullscreen="false" type="application/x-shockwave-flash" wmode="transparent" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="trustedOrigins=getbootstrap.com%2C%2F%2Fgetbootstrap.com%2Chttp%3A%2F%2Fgetbootstrap.com" scale="exactfit">
 			</object>
 		</div>-->
+		
 	</body>
 </html>

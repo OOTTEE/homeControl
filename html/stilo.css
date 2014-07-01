@@ -28,7 +28,7 @@ body {
 .navbar-fixed-top {
   border: 0;
 }
-.titulo{
+.tituloPagina{
 	font-weight: bolder;
 }
 
@@ -137,10 +137,20 @@ body {
 	font-size:40px !important;
 }
 .placeholder span {
-font-size: 50px;
-font-weight: 600;
+	font-size: 50px;
+	font-weight: 600;
 }
-
 .icon-white{
 	color: white;
+}
+.menuPersianas .titulo {
+	margin-left: 0px ;
+	margin-right: 0px ;
+	padding: 10px 0px;
+}
+.menuPersianas .grupo {
+	margin-bottom: 0px ;
+}
+.bar1{
+	padding-bottom: 0px;
 }
