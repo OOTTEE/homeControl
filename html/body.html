@@ -1,0 +1,44 @@
+<div class="col-sm-4 col-md-2 sidebar navbar-collapse  bar2">
+	<div class="long-sidebar">
+		<ul class="nav nav-sidebar" >
+		<li onclick="selectOption(event)" class="active"><a href="./" >Inicio</a></li>
+		<li onclick="selectOption(event)">
+			<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="collapsed">Habitaciones</a>
+			<div id="collapseOne" class="panel-collapse collapse sub-sidebar">
+				<ul class="nav nav-sub-sidebar " role="menu">
+				  {% for habitacion in habitaciones%}
+					<li><a href="./habitacion">{{habitacion[1]}}</a></li>
+				  {%endfor%}
+				</ul>
+			</div>
+		</li>
+		<li onclick="selectOption(event)"><a href="#" >Persianas</a></li>
+		</ul>
+	</div>
+</div>
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		{% include [pagina] %}
+</div>
+
+<script type="text/javascript">
+function startTime(){
+	today=new Date();
+	h=today.getHours();
+	m=today.getMinutes();
+	s=today.getSeconds();
+	m=checkTime(m);
+	document.getElementById('reloj').innerHTML=h+":"+m;
+	t=setTimeout('startTime()',500);
+}
+function checkTime(i){
+	if (i<10){
+		i="0" + i;
+	}
+	return i;
+}
+window.onload=function(){startTime();}
+function selectOption(event) {
+	$('.nav.nav-sidebar')[0].getElementsByClassName('active')[0].className=''
+	event.toElement.parentElement.className='active'
+}
+</script>

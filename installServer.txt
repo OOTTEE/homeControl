@@ -87,5 +87,13 @@
 
 	./homeControl.fcgi
 	
+11º Instalar sqllite3
+	
+		sudo apt-get install sqllite3
+		
+12º crear BD:
+
+	sqlite3 ./db/dataBase.db < ./db/db.sql
+	
 	
 	
