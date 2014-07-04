@@ -63,6 +63,7 @@
 			}
 		}
 	
+5 B Linkar el archivo a la configuracion
 	sudo ln -s /var/www/homeControl/homeControl-nginx.conf /etc/nginx/conf.d/
 
 6º añadir el usuario www-data al grupo pi para que pueda ejecutar el socket 
