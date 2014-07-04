@@ -63,7 +63,7 @@
 			}
 		}
 	
-5 B Linkar el archivo a la configuracion
+5ºB Linkar el archivo a la configuracion
 	sudo ln -s /var/www/homeControl/homeControl-nginx.conf /etc/nginx/conf.d/
 
 6º añadir el usuario www-data al grupo pi para que pueda ejecutar el socket 
@@ -96,5 +96,7 @@
 
 	sqlite3 ./db/dataBase.db < ./db/db.sql
 	
+13º Cambiar permisos carpeta homeControl
 	
+	chmod 770 /var/www/homeControl/
 	
