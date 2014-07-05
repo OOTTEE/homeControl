@@ -7,7 +7,7 @@ app.config['DEBUG'] = True
 env = Environment(loader=PackageLoader('homeControl', 'html'))
 		
 @app.route('/')
-def homeControl():
+def homeControl(): 
 	c  = conn()
 	habitaciones = c.query('select * from habitacion')
 	
