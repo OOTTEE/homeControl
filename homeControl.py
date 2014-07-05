@@ -2,7 +2,6 @@ from flask import Flask
 from jinja2 import Environment, PackageLoader
 from BD import conn
 
-
 app = Flask(__name__)
 app.config['DEBUG'] = True
 env = Environment(loader=PackageLoader('homeControl', 'html'))
