@@ -46,7 +46,11 @@
 
 		<div class="container-fluid">
 		  <div class="row">
-			{% include ["body.html"] %}
+			{% if login %}
+				{% include ["body.html"] %}
+			{% else %}
+				{% include ["login.html"] %}
+			{% endif %}
 		  </div>
 		</div>
 

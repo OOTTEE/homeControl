@@ -19,12 +19,17 @@ def homeControl():
 	c.close()
 	template = env.get_template('index.html')
 	values={ 'pagina' : 'inicio.html',
-			'habitaciones' : habitaciones
+			 'login' : True,
+			 'habitaciones' : habitaciones
 	}
 	return template.render(values)
 	
 
-	
+@app.route('/login')
+def login():
+	template = env.get_template('index.html')
+	values={ 'login' : False}
+	return template.render(values)	
 	
 @app.route('/habitacion')
 def habitacion(): 
@@ -33,6 +38,7 @@ def habitacion():
 	c.close()
 	template = env.get_template('index.html')
 	values={ 'pagina' : 'habitacion.html',
+			 'login' : True,
 			'habitaciones' : habitaciones
 	}
 	return template.render(values)
@@ -44,6 +50,7 @@ def adminHabitacion():
 	c.close()
 	template = env.get_template('index.html')
 	values={ 'pagina' : 'adminHabitaciones.html',
+			 'login' : True,
 			'habitaciones' : habitaciones
 	}
 	return template.render(values)
@@ -55,6 +62,7 @@ def adminComponentes():
 	c.close()
 	template = env.get_template('index.html')
 	values={ 'pagina' : 'adminComponentes.html',
+			 'login' : True,
 	}
 	return template.render(values)
 
