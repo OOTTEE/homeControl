@@ -1,4 +1,4 @@
-<div class="col-sm-4 col-md-2 sidebar navbar-collapse  bar2">
+﻿<div class="col-sm-4 col-md-2 sidebar navbar-collapse  bar2">
 	<div class="long-sidebar">
 		<ul class="nav nav-sidebar" >
 		<li onclick="selectOption(event)" class="active"><a href="./" >Inicio</a></li>
@@ -6,9 +6,11 @@
 			<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="collapsed">Habitaciones</a>
 			<div id="collapseOne" class="panel-collapse collapse sub-sidebar">
 				<ul class="nav nav-sub-sidebar " role="menu">
-				  {% for habitacion in habitaciones%}
-					<li><a href="./habitacion">{{habitacion[1]}}</a></li>
-				  {%endfor%}
+					{% if not habitaciones is none %}
+						{% for habitacion in habitaciones %}
+							<li><a href="./habitacion">{{habitacion[1]}}</a></li>
+						{%endfor%}
+					{% endif %}
 				</ul>
 			</div>
 		</li>

@@ -1,21 +1,21 @@
 from flask import Flask
 from jinja2 import Environment, PackageLoader
-from BD import conn
+from DB import *
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
 env = Environment(loader=PackageLoader('homeControl', 'html'))
+
 		
 @app.route('/')
 def homeControl(): 
-	c  = conn()
-	habitaciones = c.query('select * from habitacion')
-	
-	#print c.query('insert into habitacion (name) values (\'Salon\')')
-	#print c.query('insert into habitacion (name) values (\'Cocina\')')
-	#print c.query('insert into habitacion (name) values (\'Viky\')')
-	#c.commit()
-	c.close()
+	db=get_db()
+	habitaciones = query_db('select * from habitacion')
+	#print query_db('insert into habitacion (name) values (\'Salon\')')
+	#print query_db('insert into habitacion (name) values (\'Cocina\')')
+	#print query_db('insert into habitacion (name) values (\'Viky\')')
+	#commit_db()
+	close_db()
 	template = env.get_template('index.html')
 	values={ 'pagina' : 'inicio.html',
 			 'login' : True,
