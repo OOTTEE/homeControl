@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request, make_response, redirect, url_for
 from jinja2 import Environment, PackageLoader
 from DB import *
 
@@ -7,34 +7,35 @@ app.config['DEBUG'] = True
 env = Environment(loader=PackageLoader('homeControl', 'html'))
 
 		
-@app.route('/')
-def homeControl(): 
-	db=get_db()
-	habitaciones = query_db('select * from habitacion')
-	#print query_db('insert into habitacion (name) values (\'Salon\')')
-	#print query_db('insert into habitacion (name) values (\'Cocina\')')
-	#print query_db('insert into habitacion (name) values (\'Viky\')')
-	#commit_db()
-	close_db()
-	template = env.get_template('index.html')
-	values={ 'pagina' : 'inicio.html',
-			 'login' : True,
-			 'habitaciones' : habitaciones
-	}
+@app.route('/',methods=['GET','POST'])
+def homeControl():
+	username = request.cookies.get('username')
+	if username is not None:
+		db=get_db()
+		habitaciones = query_db('select * from habitacion')
+		close_db(None)
+		template = env.get_template('index.html')
+		values={ 'pagina' : 'inicio.html',
+				 'login' : True,
+				 'habitaciones' : habitaciones,
+				 'username' : username
+		}
+	else:
+		template = env.get_template('index.html')
+		values={ 'login' : False}
 	return template.render(values)
 	
-
-@app.route('/login')
+@app.route('/login',methods=['GET','POST'])
 def login():
-	template = env.get_template('index.html')
-	values={ 'login' : False}
-	return template.render(values)	
+	print request.form['username']
+	print request.form['password']
+	return redirect('/')	
 	
 @app.route('/habitacion')
 def habitacion(): 
-	c  = conn()
-	habitaciones = c.query('select * from habitacion')
-	c.close()
+	db=get_db()
+	habitaciones = query_db('select * from habitacion')
+	close_db(None)
 	template = env.get_template('index.html')
 	values={ 'pagina' : 'habitacion.html',
 			 'login' : True,
@@ -44,9 +45,9 @@ def habitacion():
 	
 @app.route('/adminHabitaciones')
 def adminHabitacion(): 
-	c  = conn()
-	habitaciones = c.query('select * from habitacion')
-	c.close()
+	db=get_db()
+	habitaciones = query_db('select * from habitacion')
+	close_db(None)
 	template = env.get_template('index.html')
 	values={ 'pagina' : 'adminHabitaciones.html',
 			 'login' : True,
@@ -56,9 +57,9 @@ def adminHabitacion():
 	
 @app.route('/adminComponentes')
 def adminComponentes(): 
-	c  = conn()
-	habitaciones = c.query('select * from habitacion')
-	c.close()
+	db=get_db()
+	habitaciones = query_db('select * from habitacion')
+	close_db(None)
 	template = env.get_template('index.html')
 	values={ 'pagina' : 'adminComponentes.html',
 			 'login' : True,

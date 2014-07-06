@@ -26,8 +26,9 @@ insert into habitacion (name) values ('Viky');
 insert into habitacion (name) values ('Oliva y Suso');
 insert into habitacion (name) values ('Invitados');
 
-insert into usuario (name,pass,admin) values ('admin','1234',1);
-insert into usuario (name,pass,admin) values ('usuario','1234',1);
+/* md5(1234) = 81dc9bdb52d04dc20036dbd8313ed055*/
+insert into usuario (name,pass,admin) values ('admin','81dc9bdb52d04dc20036dbd8313ed055',1);
+insert into usuario (name,pass,admin) values ('usuario','81dc9bdb52d04dc20036dbd8313ed055',0);
 
 select * from usuario;
 

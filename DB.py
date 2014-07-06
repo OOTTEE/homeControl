@@ -11,15 +11,14 @@ def get_db():
 	db = getattr(g,'_database', None)
 	if db is None:
 		db = g._database = sqlite3.connect(DATABASE)
-		print 'conectando'
 	return db
-
 
 @app.teardown_appcontext
 def close_db(exception):
-    db = getattr(g, '_database', None)
-    if db is not None:
-        db.close()
+	db = getattr(g,'_database', None)
+	if db is not None:
+		db.close()
+	
 
 def query_db(query, args=(), one=False):
 	cur = get_db().execute(query,args)
@@ -40,9 +39,3 @@ def init_db():
 		with app.open_resource(SCHEMA, mode='r') as f:
 			db.cursor().executescript(f.read())
 		db.commit()
-		
-@app.teardown_appcontext
-def close_db():
-		db = getattr(g, '_database', None)
-		if db is not None:
-			db.close()
