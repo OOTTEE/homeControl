@@ -2,6 +2,7 @@ from flask import Flask, request, make_response, redirect, url_for
 from jinja2 import Environment, PackageLoader
 from DB import *
 
+
 app = Flask(__name__)
 app.config['DEBUG'] = True
 env = Environment(loader=PackageLoader('homeControl', 'templates'))
@@ -26,8 +27,7 @@ def homeControl():
 	return template.render(values)
 	
 @app.route('/login',methods=['GET','POST'])
-def login():
-	#pendiente
+def login(): 
 	print request.form['username']
 	print request.form['password']
 	return redirect('/')	
