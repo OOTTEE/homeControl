@@ -4,7 +4,7 @@ from DB import *
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
-env = Environment(loader=PackageLoader('homeControl', 'html'))
+env = Environment(loader=PackageLoader('homeControl', 'templates'))
 
 		
 @app.route('/',methods=['GET','POST'])
@@ -27,6 +27,7 @@ def homeControl():
 	
 @app.route('/login',methods=['GET','POST'])
 def login():
+	#pendiente
 	print request.form['username']
 	print request.form['password']
 	return redirect('/')	
