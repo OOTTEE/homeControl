@@ -11,8 +11,7 @@ env = Environment(loader=PackageLoader('homeControl', 'templates'))
 @app.route('/',methods=['GET','POST'])
 def homeControl():
 	username = request.cookies.get('username')
-	if username is not None:
-		db=get_db()
+	if username is None:
 		habitaciones = query_db('select * from habitacion')
 		close_db(None)
 		template = env.get_template('index.html')
@@ -66,6 +65,12 @@ def adminComponentes():
 			 'login' : True,
 	}
 	return template.render(values)
+	
+@app.route('/restartBD')
+def restartBD(): 
+	get_db()
+	init_db()
+	return 'ok'
 
 if __name__ == '__main__':
 	app.run(debug=True)

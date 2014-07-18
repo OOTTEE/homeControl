@@ -33,9 +33,7 @@ def commit_db():
 		db.commit()
 
 def init_db():
-	with app.app_context():
-		c = conn()
-		db = c.get_db()
-		with app.open_resource(SCHEMA, mode='r') as f:
-			db.cursor().executescript(f.read())
-		db.commit()
+	db = get_db()
+	with app.open_resource(SCHEMA, mode='r') as f:
+		db.cursor().executescript(f.read())
+	db.commit()
