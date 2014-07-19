@@ -8,7 +8,7 @@
 				<ul class="nav nav-sub-sidebar " role="menu">
 					{% if not habitaciones is none %}
 						{% for habitacion in habitaciones %}
-							<li><a href="./habitacion">{{habitacion[1]}}</a></li>
+							<li><a onclick="return loadHabitacion({{habitacion[0]}})">{{habitacion[1]}}</a></li>
 						{%endfor%}
 					{% endif %}
 				</ul>
@@ -23,24 +23,19 @@
 </div>
 
 <script type="text/javascript">
-function startTime(){
-	today=new Date();
-	h=today.getHours();
-	m=today.getMinutes();
-	s=today.getSeconds();
-	m=checkTime(m);
-	document.getElementById('reloj').innerHTML=h+":"+m;
-	t=setTimeout('startTime()',500);
-}
-function checkTime(i){
-	if (i<10){
-		i="0" + i;
-	}
-	return i;
-}
-window.onload=function(){startTime();}
+
 function selectOption(event) {
 	$('.nav.nav-sidebar')[0].getElementsByClassName('active')[0].className=''
 	event.toElement.parentElement.className='active'
 }
+
+function loadHabitacion(id){
+	var data = {
+		'id' : id
+	}
+	$.post('/habitacionAjax', data, function(response) {
+		document.querySelector('.main').innerHTML = response;
+	});
+}
+
 </script>
