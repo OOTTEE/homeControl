@@ -1,7 +1,7 @@
 ﻿<div class="col-sm-4 col-md-2 sidebar navbar-collapse  bar2">
 	<div class="long-sidebar">
 		<ul class="nav nav-sidebar" >
-		<li onclick="selectOption(event)" class="active"><a href="./" >Inicio</a></li>
+		<li onclick="selectOption(event); go_to();" class="active"><a>Inicio</a></li>
 		<li onclick="selectOption(event)">
 			<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="collapsed">Habitaciones</a>
 			<div id="collapseOne" class="panel-collapse collapse sub-sidebar">
@@ -21,21 +21,3 @@
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 		{% include [pagina] %}
 </div>
-
-<script type="text/javascript">
-
-function selectOption(event) {
-	$('.nav.nav-sidebar')[0].getElementsByClassName('active')[0].className=''
-	event.toElement.parentElement.className='active'
-}
-
-function loadHabitacion(id){
-	var data = {
-		'id' : id
-	}
-	$.post('/habitacionAjax', data, function(response) {
-		document.querySelector('.main').innerHTML = response;
-	});
-}
-
-</script>

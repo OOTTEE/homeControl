@@ -4,10 +4,21 @@
 		<!-- Default panel contents -->
 		<div class="panel-heading">Habitaciones</div>
 		<!-- List group -->
-		<ul class="list-group">
+		<ul class="list-group  lista-habitaciones">
 		{% if not habitaciones is none %}
 			{% for habitacion in habitaciones %}
-				<li class="list-group-item">{{habitacion[1]}}</li>
+				<li class="list-group-item">
+						<div class="row">
+						<div class="col-lg-10 nombre-habitacion">{{habitacion[1]}}</div>
+						<div class="col-lg-2 botones-Habitacion">
+							<div class="btn-group  btn-group-sm">
+							  <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+							  <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></button>
+							 
+							</div>
+						</div>
+					</div>
+				</li>
 			{%endfor%}
 		{% endif %}
 		</ul>
@@ -17,7 +28,7 @@
 		<div class="panel-heading" data-toggle="collapse"  href="#collapseOne4" >Añadir Habitación</div>	
 		<div id="collapseOne4" class="panel-body panel-collapse collapse">
 			<p>
-				<form role="form">
+				<form role="form" onsubmit="return false" method="POST">
 					<div class="form-group">
 						<label for="exampleInputEmail1">Nombre</label>
 						<input type="text" class="form-control" id="nombreHabitacion" placeholder="Introduzca un nombre" required="">
@@ -28,17 +39,4 @@
 		</div>
 	</div>
 </div>
-
-
-
-<script type="text/javascript">
-	function addHabitacion(name){
-		var data = {
-			'name' : document.querySelector('#nombreHabitacion').value
-		}
-		$.post('/addHabitacionAjax', data, function(response) {
-		});
-	}
-
-</script>
 

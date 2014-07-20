@@ -154,3 +154,15 @@ body {
 .bar1{
 	padding-bottom: 0px;
 }
+div.botones-Habitacion{
+	text-align:center;
+}
+
+ul.lista-habitaciones li{
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+div.nombre-habitacion{
+	margin-top: 5px;
+}

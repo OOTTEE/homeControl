@@ -27,8 +27,8 @@ create table accion (
 	accion					TEXT NOT NULL,
 	fk_u_id					INTEGER NOT NULL,
 	fk_c_id					INTEGER NOT NULL,
-	FOREIGN KEY(fk_u_id)	REFERENCES usuario(u_id) NOT NULL,
-	FOREIGN KEY(fk_c_id)	REFERENCES componente(c_id) NOT NULL
+	FOREIGN KEY(fk_u_id)	REFERENCES usuario(u_id),
+	FOREIGN KEY(fk_c_id)	REFERENCES componente(c_id)
 );
 
 insert into habitacion (name) values ('Salon');
